@@ -24,7 +24,7 @@ router.patch(
 
 router.get(
   "/all-users",
-  checkAuth(Role.ADMIN, Role.SUPER_ADMIN),
+  checkAuth(Role.ADMIN, Role.ADMIN),
   UserControllers.getAllUsers
 );
 

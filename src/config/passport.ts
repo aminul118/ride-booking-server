@@ -99,7 +99,7 @@ const googleVerifyFunction = async (
         email,
         name: profile.displayName,
         picture: profile.photos?.[0]?.value,
-        role: Role.USER,
+        role: Role.ADMIN,
         isVerified: true,
         auths: [
           {
