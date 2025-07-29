@@ -1,17 +1,17 @@
-import { Router } from "express";
-import { UserRoutes } from "../modules/user/user.routes";
-import { IModuleRoutes } from "../interfaces";
-import { AuthRouter } from "../modules/auth/auth.route";
+import { Router } from 'express';
+import { UserRoutes } from '../modules/user/user.routes';
+import { IModuleRoutes } from '../interfaces';
+import { AuthRouter } from '../modules/auth/auth.route';
 
 const router = Router();
 
 const moduleRoutes: IModuleRoutes[] = [
   {
-    path: "auth",
+    path: 'auth',
     element: AuthRouter,
   },
   {
-    path: "user",
+    path: 'user',
     element: UserRoutes,
   },
 ];

@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import envVars from "../config/env";
-import { IAuthProvider, IUser, Role } from "../modules/user/user.interface";
-import { User } from "../modules/user/user.model";
-import hashedPassword from "./hashedPassword";
+import envVars from '../config/env';
+import { IAuthProvider, IUser, Role } from '../modules/user/user.interface';
+import { User } from '../modules/user/user.model';
+import hashedPassword from './hashedPassword';
 
 const seedAdmin = async () => {
   try {
@@ -11,21 +11,21 @@ const seedAdmin = async () => {
     });
 
     if (isAdminExist) {
-      console.log("Supper admin already Exits");
+      console.log('Supper admin already Exits');
       return;
     }
 
-    console.log("Trying to create supper admin...");
+    console.log('Trying to create supper admin...');
 
     const securePassword = await hashedPassword(envVars.ADMIN_PASSWORD);
 
     const authProvider: IAuthProvider = {
-      provider: "credentials",
+      provider: 'credentials',
       providerId: envVars.ADMIN_EMAIL,
     };
 
     const payload: IUser = {
-      name: "admin",
+      name: 'admin',
       email: envVars.ADMIN_EMAIL,
       role: Role.ADMIN,
       password: securePassword,
@@ -34,7 +34,7 @@ const seedAdmin = async () => {
     };
 
     const admin = await User.create(payload);
-    console.log("Super admin created successfully \n");
+    console.log('Super admin created successfully \n');
     console.log(admin);
   } catch (error) {
     console.log(error);

@@ -1,19 +1,19 @@
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
 
 enum Role {
-  ADMIN = "ADMIN",
-  RIDER = "RIDER",
-  DRIVER = "DRIVER",
+  ADMIN = 'ADMIN',
+  RIDER = 'RIDER',
+  DRIVER = 'DRIVER',
 }
 interface IAuthProvider {
-  provider: "google" | "credentials";
+  provider: 'google' | 'credentials';
   providerId: string;
 }
 
 export enum IsActive {
-  ACTIVE = "ACTIVE",
-  INACTIVE = "INACTIVE",
-  BLOCKED = "BLOCKED",
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+  BLOCKED = 'BLOCKED',
 }
 interface IUser {
   _id?: Types.ObjectId;

@@ -1,9 +1,9 @@
-import httpStatus from "http-status-codes";
-import AppError from "../../errorHelpers/AppError";
-import { IAuthProvider, IUser, Role } from "./user.interface";
-import { User } from "./user.model";
-import { JwtPayload } from "jsonwebtoken";
-import hashedPassword from "../../utils/hashedPassword";
+import httpStatus from 'http-status-codes';
+import AppError from '../../errorHelpers/AppError';
+import { IAuthProvider, IUser, Role } from './user.interface';
+import { User } from './user.model';
+import { JwtPayload } from 'jsonwebtoken';
+import hashedPassword from '../../utils/hashedPassword';
 
 const createUserService = async (payload: Partial<IUser>) => {
   const { email, password, ...rest } = payload;
@@ -11,13 +11,13 @@ const createUserService = async (payload: Partial<IUser>) => {
   const isUserExist = await User.findOne({ email });
 
   if (isUserExist) {
-    throw new AppError(httpStatus.BAD_REQUEST, "User already exits");
+    throw new AppError(httpStatus.BAD_REQUEST, 'User already exits');
   }
 
   const securePassword = await hashedPassword(password as string);
 
   const authProvider: IAuthProvider = {
-    provider: "credentials",
+    provider: 'credentials',
     providerId: email as string,
   };
 
@@ -31,14 +31,10 @@ const createUserService = async (payload: Partial<IUser>) => {
   return user;
 };
 
-const updateUser = async (
-  userId: string,
-  payload: Partial<IUser>,
-  decodedToken: JwtPayload
-) => {
+const updateUser = async (userId: string, payload: Partial<IUser>, decodedToken: JwtPayload) => {
   const isUserExist = await User.findById(userId);
   if (!isUserExist) {
-    throw new AppError(httpStatus.NOT_FOUND, "User not found");
+    throw new AppError(httpStatus.NOT_FOUND, 'User not found');
   }
 
   /**
@@ -51,19 +47,16 @@ const updateUser = async (
 
   if (payload.role) {
     if (decodedToken.role === Role.RIDER || decodedToken.role === Role.RIDER) {
-      throw new AppError(httpStatus.FORBIDDEN, "You are not authorized");
+      throw new AppError(httpStatus.FORBIDDEN, 'You are not authorized');
     }
 
     if (payload.role === Role.RIDER && decodedToken.role === Role.ADMIN) {
-      throw new AppError(httpStatus.FORBIDDEN, "You are not authorized");
+      throw new AppError(httpStatus.FORBIDDEN, 'You are not authorized');
     }
 
     if (payload.isActive || payload.isDeleted || payload.isVerified) {
-      if (
-        decodedToken.role === Role.RIDER ||
-        decodedToken.role === Role.RIDER
-      ) {
-        throw new AppError(httpStatus.FORBIDDEN, "You are not authorized");
+      if (decodedToken.role === Role.RIDER || decodedToken.role === Role.RIDER) {
+        throw new AppError(httpStatus.FORBIDDEN, 'You are not authorized');
       }
     }
 

@@ -1,19 +1,19 @@
 /* eslint-disable no-console */
-import { Server } from "http";
-import mongoose from "mongoose";
-import envVars from "./config/env";
-import app from "./app";
-import seedAdmin from "./utils/seedAdmin";
+import { Server } from 'http';
+import mongoose from 'mongoose';
+import envVars from './config/env';
+import app from './app';
+import seedAdmin from './utils/seedAdmin';
 
 let server: Server;
 
 const startServer = async () => {
   try {
     await mongoose.connect(envVars.DB_URL as string);
-    console.log("🚀 Connected to DB");
+    console.log('🚀 Connected to DB');
 
     server = app.listen(envVars.PORT, () => {
-      console.log("Server is running on port", envVars.PORT);
+      console.log('Server is running on port', envVars.PORT);
     });
   } catch (error) {
     console.log(error);
@@ -27,8 +27,8 @@ const startServer = async () => {
 })();
 
 // SIGTERM Error Catch and shut down -->
-process.on("SIGTERM", () => {
-  console.log("SIGTERM signal received... Server shutting down..");
+process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received... Server shutting down..');
 
   if (server) {
     server.close(() => {
@@ -40,8 +40,8 @@ process.on("SIGTERM", () => {
 });
 
 // SIGINT Error Catch and shut down -->
-process.on("SIGINT", () => {
-  console.log("SIGINT signal received... Server shutting down..");
+process.on('SIGINT', () => {
+  console.log('SIGINT signal received... Server shutting down..');
 
   if (server) {
     server.close(() => {
@@ -53,8 +53,8 @@ process.on("SIGINT", () => {
 });
 
 // unhandledRejection Error Catch and shut down -->
-process.on("unhandledRejection", (err) => {
-  console.log("Unhandled Rejection detected... Server shutting down..", err);
+process.on('unhandledRejection', (err) => {
+  console.log('Unhandled Rejection detected... Server shutting down..', err);
 
   if (server) {
     server.close(() => {
@@ -66,8 +66,8 @@ process.on("unhandledRejection", (err) => {
 });
 
 //  uncaughtException Error Catch and shut down-->
-process.on("uncaughtException", (err) => {
-  console.log("Uncaught Exception detected... Server shutting down..", err);
+process.on('uncaughtException', (err) => {
+  console.log('Uncaught Exception detected... Server shutting down..', err);
 
   if (server) {
     server.close(() => {

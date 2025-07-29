@@ -1,11 +1,11 @@
-import express, { Request, Response } from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import expressSession from "express-session";
-import envVars from "./config/env";
-import notFound from "./middlewares/notFound";
-import globalErrorHandler from "./middlewares/globalErrorHandler";
-import { Routes } from "./router";
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import expressSession from 'express-session';
+import envVars from './config/env';
+import notFound from './middlewares/notFound';
+import globalErrorHandler from './middlewares/globalErrorHandler';
+import { Routes } from './router';
 
 const app = express();
 
@@ -33,7 +33,7 @@ app.use(
     secret: envVars.EXPRESS_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 );
 
 app.use(express.json());
@@ -42,13 +42,13 @@ app.use(cookieParser());
 app.use(cors());
 
 // Api routing version 1
-app.use("/api/v1", Routes);
+app.use('/api/v1', Routes);
 
 // Testing api
-app.get("/", (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
     status: 200,
-    message: "Ride Booking Server Running",
+    message: 'Ride Booking Server Running',
   });
 });
 

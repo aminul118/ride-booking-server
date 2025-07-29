@@ -1,5 +1,5 @@
-import jwt, { JwtPayload, SignOptions } from "jsonwebtoken";
-import envVars from "../config/env";
+import jwt, { JwtPayload, SignOptions } from 'jsonwebtoken';
+import envVars from '../config/env';
 
 const generateToken = (payload: JwtPayload, expiresIn: string): string => {
   const token = jwt.sign(payload, envVars.JWT.JWT_ACCESS_SECRET, {
