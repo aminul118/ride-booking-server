@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import AppError from "../errorHelpers/AppError";
 import { verifyToken } from "../utils/jwt";
-import envVars from "../config/env";
 import httpStatus from "http-status-codes";
 import { JwtPayload } from "jsonwebtoken";
 import { User } from "../modules/user/user.model";
@@ -16,10 +15,7 @@ const checkAuth =
       if (!accessToken) {
         throw new AppError(httpStatus.BAD_GATEWAY, "No token received");
       }
-      const verifiedToken = verifyToken(
-        accessToken,
-        envVars.JWT_ACCESS_SECRET
-      ) as JwtPayload;
+      const verifiedToken = verifyToken(accessToken) as JwtPayload;
 
       if (!verifiedToken) {
         throw new AppError(httpStatus.UNAUTHORIZED, "You are not authorized");

@@ -11,7 +11,7 @@ import envVars from "../config/env";
 import { handlerDuplicateError } from "../helpers/handlerDuplicateError";
 import { deleteImageFromCLoudinary } from "../config/cloudinary.config";
 
-export const globalErrorHandler = async (
+const globalErrorHandler = async (
   err: any,
   req: Request,
   res: Response,
@@ -85,3 +85,5 @@ export const globalErrorHandler = async (
     stack: envVars.NODE_ENV === "development" ? err.stack : null,
   });
 };
+
+export default globalErrorHandler;

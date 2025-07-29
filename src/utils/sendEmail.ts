@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import ejs from "ejs";
 import nodemailer from "nodemailer";
 import path from "path";
-
 import AppError from "../errorHelpers/AppError";
 import envVars from "../config/env";
+import { SendEmailOptions } from "../interfaces";
 
 const transporter = nodemailer.createTransport({
   secure: true,
@@ -12,21 +13,9 @@ const transporter = nodemailer.createTransport({
     user: envVars.EMAIL_SENDER.SMTP_USER,
     pass: envVars.EMAIL_SENDER.SMTP_PASS,
   },
-  port: Number(envVars.EMAIL_SENDER.SMTP_PORT),
+  port: envVars.EMAIL_SENDER.SMTP_PORT,
   host: envVars.EMAIL_SENDER.SMTP_HOST,
 });
-
-interface SendEmailOptions {
-  to: string;
-  subject: string;
-  templateName: string;
-  templateData?: Record<string, any>;
-  attachments?: {
-    filename: string;
-    content: Buffer | string;
-    contentType: string;
-  }[];
-}
 
 const sendEmail = async ({
   to,
@@ -49,9 +38,13 @@ const sendEmail = async ({
         contentType: attachment.contentType,
       })),
     });
-    console.log(`\u2709\uFE0F Email sent to ${to}: ${info.messageId}`);
+    if (envVars.NODE_ENV == "development") {
+      console.log(`\u2709\uFE0F Email sent to ${to}: ${info.messageId}`);
+    }
   } catch (error: any) {
-    console.log("email sending error", error.message);
+    if (envVars.NODE_ENV == "development") {
+      console.log("email sending error", error.message);
+    }
     throw new AppError(401, "Email error");
   }
 };

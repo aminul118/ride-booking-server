@@ -7,10 +7,12 @@ interface EnvConfig {
   PORT: string;
   DB_URL: string;
   NODE_ENV: "development" | "production";
-  JWT_ACCESS_SECRET: string;
-  JWT_ACCESS_EXPIRES: string;
-  JWT_REFRESH_SECRET: string;
-  JWT_REFRESH_EXPIRES: string;
+  JWT: {
+    JWT_ACCESS_SECRET: string;
+    JWT_ACCESS_EXPIRES: string;
+    JWT_REFRESH_SECRET: string;
+    JWT_REFRESH_EXPIRES: string;
+  };
   BCRYPT_SALT_ROUND: number;
   ADMIN_EMAIL: string;
   ADMIN_PASSWORD: string;
@@ -58,10 +60,12 @@ const loadEnvVariables = (): EnvConfig => {
     PORT: getEnv("PORT"),
     DB_URL: getEnv("DB_URL"),
     NODE_ENV: getEnv("NODE_ENV") as "development" | "production",
-    JWT_ACCESS_SECRET: getEnv("JWT_ACCESS_SECRET"),
-    JWT_ACCESS_EXPIRES: getEnv("JWT_ACCESS_EXPIRES"),
-    JWT_REFRESH_SECRET: getEnv("JWT_REFRESH_SECRET"),
-    JWT_REFRESH_EXPIRES: getEnv("JWT_REFRESH_EXPIRES"),
+    JWT: {
+      JWT_ACCESS_SECRET: getEnv("JWT_ACCESS_SECRET"),
+      JWT_ACCESS_EXPIRES: getEnv("JWT_ACCESS_EXPIRES"),
+      JWT_REFRESH_SECRET: getEnv("JWT_REFRESH_SECRET"),
+      JWT_REFRESH_EXPIRES: getEnv("JWT_REFRESH_EXPIRES"),
+    },
     BCRYPT_SALT_ROUND: Number(getEnv("BCRYPT_SALT_ROUND")),
     ADMIN_EMAIL: getEnv("SUPER_ADMIN_EMAIL"),
     ADMIN_PASSWORD: getEnv("SUPER_ADMIN_PASSWORD"),

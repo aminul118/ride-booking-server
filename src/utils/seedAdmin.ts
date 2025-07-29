@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import bcrypt from "bcryptjs";
 import envVars from "../config/env";
 import { IAuthProvider, IUser, Role } from "../modules/user/user.interface";
 import { User } from "../modules/user/user.model";
+import hashedPassword from "./hashedPassword";
 
 const seedAdmin = async () => {
   try {
@@ -17,10 +17,7 @@ const seedAdmin = async () => {
 
     console.log("Trying to create supper admin...");
 
-    const hashedPassword = await bcrypt.hash(
-      envVars.ADMIN_PASSWORD,
-      envVars.BCRYPT_SALT_ROUND
-    );
+    const securePassword = await hashedPassword(envVars.ADMIN_PASSWORD);
 
     const authProvider: IAuthProvider = {
       provider: "credentials",
@@ -28,10 +25,10 @@ const seedAdmin = async () => {
     };
 
     const payload: IUser = {
-      name: "super admin",
+      name: "admin",
       email: envVars.ADMIN_EMAIL,
       role: Role.ADMIN,
-      password: hashedPassword,
+      password: securePassword,
       isVerified: true,
       auths: [authProvider],
     };
@@ -44,4 +41,4 @@ const seedAdmin = async () => {
   }
 };
 
-export { seedAdmin };
+export default seedAdmin;

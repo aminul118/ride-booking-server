@@ -1,19 +1,5 @@
 import { Response } from "express";
-
-interface IMeta {
-  page: number;
-  limit: number;
-  totalPage: number;
-  total: number;
-}
-
-interface IResponse<T> {
-  statusCode: number;
-  success: boolean;
-  message: string;
-  data: T;
-  meta?: IMeta;
-}
+import { IResponse } from "../interfaces";
 
 const sendResponse = <T>(res: Response, data: IResponse<T>) => {
   res.status(data.statusCode).json({

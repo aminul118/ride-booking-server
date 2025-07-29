@@ -1,23 +1,23 @@
 import { Router } from "express";
 import { UserRoutes } from "../modules/user/user.routes";
+import { IModuleRoutes } from "../interfaces";
+import { AuthRouter } from "../modules/auth/auth.route";
 
 const router = Router();
 
-interface IModuleRoutes {
-  path: string;
-  element: Router;
-}
-
 const moduleRoutes: IModuleRoutes[] = [
   {
-    path: "",
+    path: "auth",
+    element: AuthRouter,
+  },
+  {
+    path: "user",
     element: UserRoutes,
   },
 ];
 
 moduleRoutes.forEach((r) => {
-  router.use(r.path, r.element);
+  router.use(`/${r.path}`, r.element);
 });
 
-const Routes = router;
-export default Routes;
+export const Routes = router;

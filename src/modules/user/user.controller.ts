@@ -1,7 +1,6 @@
 import httpStatus from "http-status-codes";
 import { userServices } from "./user.service";
 import { Request, Response } from "express";
-
 import { JwtPayload } from "jsonwebtoken";
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";

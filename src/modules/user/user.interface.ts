@@ -1,18 +1,11 @@
 import { Types } from "mongoose";
 
-export enum Role {
+enum Role {
   ADMIN = "ADMIN",
   RIDER = "RIDER",
   DRIVER = "DRIVER",
 }
-
-// auth providers
-/**
- * Email Password
- * Google Authentication
- */
-
-export interface IAuthProvider {
+interface IAuthProvider {
   provider: "google" | "credentials";
   providerId: string;
 }
@@ -22,7 +15,7 @@ export enum IsActive {
   INACTIVE = "INACTIVE",
   BLOCKED = "BLOCKED",
 }
-export interface IUser {
+interface IUser {
   _id?: Types.ObjectId;
   name: string;
   email: string;
@@ -38,3 +31,5 @@ export interface IUser {
   bookings?: Types.ObjectId[];
   guides?: Types.ObjectId[];
 }
+
+export { Role, IAuthProvider, IUser };
