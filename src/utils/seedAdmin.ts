@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import envVars from '../config/env';
-import { IAuthProvider, IUser, Role } from '../modules/user/user.interface';
+import { IAuthProvider, IStatus, IUser, Role } from '../modules/user/user.interface';
 import { User } from '../modules/user/user.model';
 import hashedPassword from './hashedPassword';
 
@@ -30,6 +30,7 @@ const seedAdmin = async () => {
       role: Role.ADMIN,
       password: securePassword,
       isVerified: true,
+      status: IStatus.ONLINE,
       auths: [authProvider],
     };
 

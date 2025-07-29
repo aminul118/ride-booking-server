@@ -10,11 +10,16 @@ interface IAuthProvider {
   providerId: string;
 }
 
-export enum IsActive {
+enum IsActive {
   ACTIVE = 'ACTIVE',
   INACTIVE = 'INACTIVE',
   BLOCKED = 'BLOCKED',
 }
+enum IStatus {
+  ONLINE = 'ONLINE',
+  OFFLINE = 'OFFLINE',
+}
+
 interface IUser {
   _id?: Types.ObjectId;
   name: string;
@@ -25,6 +30,7 @@ interface IUser {
   address?: string;
   isDeleted?: string;
   isActive?: IsActive;
+  status: IStatus;
   isVerified?: boolean;
   role: Role;
   auths: IAuthProvider[];
@@ -32,4 +38,4 @@ interface IUser {
   guides?: Types.ObjectId[];
 }
 
-export { Role, IAuthProvider, IUser };
+export { Role, IAuthProvider, IUser, IsActive, IStatus };
