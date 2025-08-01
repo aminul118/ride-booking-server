@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { IRide } from './ride.interface';
+import { IRide, IRideStatus } from './ride.interface';
 
 const rideSchema = new Schema<IRide>(
   {
@@ -15,6 +15,15 @@ const rideSchema = new Schema<IRide>(
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
+    },
+    driverId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    status: {
+      type: String,
+      enum: Object.values(IRideStatus),
+      default: IRideStatus.PENDING,
     },
   },
   {

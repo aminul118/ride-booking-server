@@ -3,6 +3,7 @@ import { UserRoutes } from '../modules/user/user.routes';
 import { IModuleRoutes } from '../interfaces';
 import { AuthRouter } from '../modules/auth/auth.route';
 import { RideRoutes } from '../modules/ride/ride.route';
+import { DriverRoutes } from '../modules/driver/driver.route';
 
 const router = Router();
 
@@ -16,8 +17,12 @@ const moduleRoutes: IModuleRoutes[] = [
     element: UserRoutes,
   },
   {
-    path: 'ride',
+    path: 'rides',
     element: RideRoutes,
+  },
+  {
+    path: 'rides',
+    element: DriverRoutes,
   },
 ];
 

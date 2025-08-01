@@ -1,7 +1,13 @@
+import { Types } from 'mongoose';
+
 enum IDriverStatus {
-  PICKED = 'Picked Up',
+  PICKED_UP = 'Picked Up',
   IN_TRANSIT = 'In Transit',
   COMPLETED = 'Completed',
 }
 
-export { IDriverStatus };
+interface IDriver {
+  bookingUser: Types.ObjectId;
+}
+
+export { IDriverStatus, IDriver };
