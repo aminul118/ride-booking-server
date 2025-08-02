@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
     "build": "tsc",
+    "deploy": "vercel --prod",
     "start": "node ./dist/server.js",
     "prepare": "husky",
     "lint": "npx eslint ./src",
@@ -19,7 +20,7 @@
   "type": "commonjs",
   "dependencies": {
     "bcryptjs": "^3.0.2",
-    "cloudinary": "^2.7.0",
+    "cloudinary": "^1.21.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "ejs": "^3.1.10",
@@ -33,7 +34,7 @@
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
-    "zod": "^4.0.10"
+    "zod": "^4.0.14"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",

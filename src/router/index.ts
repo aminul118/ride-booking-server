@@ -21,7 +21,7 @@ const moduleRoutes: IModuleRoutes[] = [
     element: RideRoutes,
   },
   {
-    path: 'rides',
+    path: 'drivers',
     element: DriverRoutes,
   },
 ];

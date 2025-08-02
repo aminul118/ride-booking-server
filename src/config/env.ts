@@ -4,6 +4,7 @@ import path from 'path';
 dotenv.config({ path: path.join(process.cwd(), '.env') });
 
 interface EnvConfig {
+
   PORT: string;
   DB_URL: string;
   NODE_ENV: 'development' | 'production';

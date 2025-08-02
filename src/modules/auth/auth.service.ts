@@ -5,10 +5,10 @@ import httpStatus from 'http-status-codes';
 import bcryptjs from 'bcryptjs';
 import { createNewAccessTokenWithRefreshToken } from '../../utils/userTokens';
 import { JwtPayload } from 'jsonwebtoken';
-import envVars from '../../config/env';
 import { IAuthProvider, IsActive } from '../user/user.interface';
 import jwt from 'jsonwebtoken';
 import sendEmail from '../../utils/sendEmail';
+import envVars from '../../config/env';
 
 const getNewAccessToken = async (refreshToken: string) => {
   return await createNewAccessTokenWithRefreshToken(refreshToken);
@@ -83,7 +83,7 @@ const forgotPassword = async (email: string) => {
     role: isUserExist.role,
   };
 
-  const resetToken = jwt.sign(jwtPayload, envVars.JWT_ACCESS_SECRET, {
+  const resetToken = jwt.sign(jwtPayload, envVars.JWT.JWT_ACCESS_SECRET, {
     expiresIn: '10m',
   });
 
