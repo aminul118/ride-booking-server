@@ -5,7 +5,7 @@ A backend API for handling ride booking, user management, authentication, and dr
 ## 📌 Base URL
 
 ```
-{{PH_TOUR}}
+{{PH_TOUR}} = https://ride-booking-henna.vercel.app
 ```
 
 ---
