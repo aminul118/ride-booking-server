@@ -1,0 +1,436 @@
+{
+	"info": {
+		"_postman_id": "5ab56dad-f87a-4dbb-819c-582ab1c98be8",
+		"name": "Ride Booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38847298"
+	},
+	"item": [
+		{
+			"name": "Ride Booking",
+			"item": [
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"688863a38a144f3912d98c91\",\r\n    \"latitude\": \"99999\",\r\n    \"longitude\": \"999999\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/rides/create",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"rides",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single user booking",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"688863a38a144f3912d98c91\",\r\n    \"latitude\": \"99999\",\r\n    \"longitude\": \"999999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/rides/688863a38a144f3912d98c91",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"rides",
+								"688863a38a144f3912d98c91"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete booking",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"688863a38a144f3912d98c91\",\r\n    \"latitude\": \"99999\",\r\n    \"longitude\": \"999999\"\r\n}"
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/rides/688c6bb0f8b16ccb3113ba4e",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"rides",
+								"688c6bb0f8b16ccb3113ba4e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"name\": \"Aminul Islam\",\n    \"email\": \"aminultabedge@gmail.com\",\n    \"password\": \"Aminsul@118\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"value": "",
+									"type": "file",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/user/register",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODcwYTczYzA3ZTVhZTc4Yzc1ZDZhZmMiLCJlbWFpbCI6ImFtaW51bDFAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzUyMzY2MzY5LCJleHAiOjE3NTQ5NTgzNjl9.4HWRKp5Wl0eY7KwltKBE9ERe3Df5gqjuFhx8ddlApkg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{PH_TOUR}}/user/all-users",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"user",
+								"all-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODc4YThjODYzYTMwZGViYWU1MWQ3MmQiLCJlbWFpbCI6InN1cGVyQGdtYWlsLmNvbSIsInJvbGUiOiJTVVBFUl9BRE1JTiIsImlhdCI6MTc1MzQ2MDg5NCwiZXhwIjoxNzUzNTQ3Mjk0fQ.3qZRHIn2R3VYgySH35B_ZZ_HFzSUROzc498JS-Wr4qM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{\n    \"name\": \"Hyper118\",\n    \"email\": \"hyper118@gmail.com\",\n    \"password\": \"Aminul1@118\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/mrami/OneDrive/Desktop/49526f21-5764-4a7e-8edc-209f48e0cf57.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/user/6883b7fda2af30185f796924",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"user",
+								"6883b7fda2af30185f796924"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"super@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/auth/login",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/auth/logout",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Access Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/auth/refresh-token",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456@123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/auth/set-password",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"auth",
+								"set-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/auth/reset-password",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mr.aminul118@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/auth/forgot-password",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/auth/change-password",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Driver",
+			"item": [
+				{
+					"name": "get all rides request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"688863a38a144f3912d98c91\",\r\n    \"latitude\": \"99999\",\r\n    \"longitude\": \"999999\"\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/drivers",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"drivers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update ride status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"Picked Up\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PH_TOUR}}/drivers/688c7da6cb83a4eab1247d2a",
+							"host": [
+								"{{PH_TOUR}}"
+							],
+							"path": [
+								"drivers",
+								"688c7da6cb83a4eab1247d2a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
